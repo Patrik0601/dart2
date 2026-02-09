@@ -10,11 +10,15 @@ void main() {
   getDividers(num3);
   String szo = "Alma fáról";
   getVowels(szo);
+  getConsonants(szo);
+  getFirstChar(szo);
+  int mun4 = 12345;
+  sumOfDigits(mun4);
 }
 
 void getRandomNumber() {
   Random random = new Random();
-  int randomNumber = random.nextInt(98) + 1;
+  int randomNumber = random.nextInt(99) + 1;
   print("Generated Random Number Between 1 to 99: $randomNumber");
 }
 
@@ -59,4 +63,42 @@ void getVowels(String c) {
         maganhangzokSzoban.add(maganhangzok[i]);
     }
     print(maganhangzokSzoban);
+}
+
+List<String> getConsonants(String text) {
+  List<String> vowels = [
+    "a", "e", "i", "o", "u",
+    "á", "é", "í", "ó", "ö", "ő", "ú", "ü", "ű"
+  ];
+
+  List<String> result = [];
+
+  for (int i = 0; i < text.length; i++) {
+    String char = text[i].toLowerCase();
+
+    if (RegExp(r'[a-záéíóöőúüű]').hasMatch(char) &&
+        !vowels.contains(char)) {
+      result.add(text[i]);
+    }
+  }
+  print(result);
+}
+
+String getFirstChar(String text) {
+  if (text.isEmpty) {
+    return "";
+  }
+  print(text[0]);
+}
+
+int sumOfDigits(int number) {
+  int sum = 0;
+  int n = number.abs();
+
+  while (n > 0) {
+    sum += n % 10;
+    n ~/= 10;
+  }
+
+  print(sum);
 }

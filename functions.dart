@@ -2,7 +2,9 @@ void main() {
   int num1 = 725;
   reverseInteger(num1);
   sortNumbersDes(num1);
-  print('${duplicates([1, 2, 4, 4, 3, 3, 1, 5, 3, "5"])} ==> [4, 3, 1]');
+  '${duplicates([1, 2, 4, 4, 3, 3, 1, 5, 3, "5"])} ==> [4, 3, 1]';
+  grade(85, 100);
+  gausSum(5);
 }
 
 void reverseInteger(int a) {
@@ -36,12 +38,35 @@ List<dynamic> duplicates(List<dynamic> arr) {
     }
   }
 
-  return result;
+  print(result);
 }
 
 void grade(int a, int b) {
-  int percent = (a / b * 100).round();
-  if(percent >= 0 && percent <= 100){
-    if()
+  if (total <= 0) {
+    return "Invalid total";
   }
+
+  double percent = (points / total) * 100;
+
+  if (percent >= 90) {
+    print("A");
+  } else if (percent >= 75) {
+    print("B");
+  } else if (percent >= 60) {
+    print("C");
+  } else if (percent >= 45) {
+    print("D");
+  } else {
+    print("F");
+  }
+}
+
+void gausSum(int number) {
+  int sum = 0;
+
+  for (int i = 0; i <= number; i++) {
+    sum += i;
+  }
+
+  print(sum);
 }
