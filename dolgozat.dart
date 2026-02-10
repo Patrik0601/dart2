@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 void main(){
   String headTail(String txt){
     if(txt.length <= 0)
@@ -30,23 +32,23 @@ void main(){
   print(oddFizz(7));
   print(oddFizz(9));
 
-  List<int>finacci(int number){
-      List<int> kn = [];
-      for(int i = 0; i < number; i++){
-        if(i < 3){
-          kn.add(i);
-        }
-        else{
-          kn.add(kn[i-1] + kn[i-2]);
-        }
+List<int>finacci(int number){
+    List<int> kn = [];
+    for(int i = 0; i < number; i++){
+      if(i < 2){
+        kn.add(i);
       }
-      return kn;
+      else{
+        kn.add(kn[i-1] + kn[i-2]);
+      }
     }
-    print(finacci(0));
-    print(finacci(1));
-    print(finacci(2));
-    print(finacci(3));
-    print(finacci(10));
+    return kn;
+  }
+  print(finacci(0));
+  print(finacci(1));
+  print(finacci(2));
+  print(finacci(3));
+  print(finacci(10));
 
   String vowelLower(String txt){
     List<String> vowels = [
