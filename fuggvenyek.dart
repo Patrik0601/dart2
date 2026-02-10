@@ -14,6 +14,7 @@ void main() {
   getFirstChar(szo);
   int mun4 = 12345;
   sumOfDigits(mun4);
+  print(getConsonants(szo));
 }
 
 void getRandomNumber() {
@@ -58,17 +59,29 @@ void getVowels(String c) {
     "ű",
   ];
   List<String> maganhangzokSzoban = [];
-  for(int i = 0; i <= maganhangzok.length-1; i++)
+  for (int i = 0; i <= maganhangzok.length - 1; i++)
     if (c.contains(maganhangzok[i])) {
-        maganhangzokSzoban.add(maganhangzok[i]);
+      maganhangzokSzoban.add(maganhangzok[i]);
     }
-    print(maganhangzokSzoban);
+  print(maganhangzokSzoban);
 }
 
 List<String> getConsonants(String text) {
   List<String> vowels = [
-    "a", "e", "i", "o", "u",
-    "á", "é", "í", "ó", "ö", "ő", "ú", "ü", "ű"
+    "a",
+    "e",
+    "i",
+    "o",
+    "u",
+    "á",
+    "é",
+    "í",
+    "ó",
+    "ö",
+    "ő",
+    "ú",
+    "ü",
+    "ű",
   ];
 
   List<String> result = [];
@@ -76,22 +89,21 @@ List<String> getConsonants(String text) {
   for (int i = 0; i < text.length; i++) {
     String char = text[i].toLowerCase();
 
-    if (RegExp(r'[a-záéíóöőúüű]').hasMatch(char) &&
-        !vowels.contains(char)) {
+    if (RegExp(r'[a-záéíóöőúüű]').hasMatch(char) && !vowels.contains(char)) {
       result.add(text[i]);
     }
   }
-  print(result);
+  return result;
 }
 
-String getFirstChar(String text) {
+void getFirstChar(String text) {
   if (text.isEmpty) {
-    return "";
+    print("");
   }
   print(text[0]);
 }
 
-int sumOfDigits(int number) {
+void sumOfDigits(int number) {
   int sum = 0;
   int n = number.abs();
 
