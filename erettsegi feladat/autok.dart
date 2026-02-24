@@ -36,4 +36,44 @@ void main() {
     }
   }
   print('Jeladásainak időpontjai: ${idopontok.join(' ')}');
+
+  print("4.feladat: ");
+  print("Kérem adja meg az órát: ");
+  ora = int.tryParse(stdin.readLineSync()!);
+  print("Kérem adja meg a percet: ");
+  perc = int.tryParse(stdin.readLineSync()!);
+  ido = ora * 60 + perc;
+  int counter = 0;
+  for (var auto in autok) {
+    if (auto['ido'] as int == ido) {
+      counter++;
+    }
+  }
+  print("A jeladatok száma: ${counter}");
+
+  print("5.feladat: ");
+  int maxSebesseg = 0;
+  List<String> rendszamok = [];
+  for (var auto in autok) {
+    if (auto['sebesseg'] as int == maxSebesseg) {
+      rendszamok.add(auto['rendszam']);
+    } else if (auto['sebesseg'] as int > maxSebesseg) {
+      maxSebesseg = auto['sebesseg'];
+      rendszamok = [auto['rendszam']];
+    }
+  }
+  print("A legnagyobb sebesség: ${maxSebesseg}");
+  print("A járművek: ${rendszamok.join(' ')}");
+
+  print("6.feladat: ");
+  print("Kérem adjon meg egy rendszámot: ");
+  var rendszam = stdin.readLineSync()!;
+  for (var auto in autok) {
+    if (auto['rendszam'] as String == rendszam) {
+      var ido = auto['ido'] as int;
+      var ora = ido ~/ 60;
+      var perc = ido % 60;
+      print("${ora}:${perc} ${auto['sebesseg']} km");
+    }
+  }
 }
