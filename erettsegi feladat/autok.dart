@@ -68,12 +68,40 @@ void main() {
   print("6.feladat: ");
   print("Kérem adjon meg egy rendszámot: ");
   var rendszam = stdin.readLineSync()!;
+  double tavolsag = 0.0;
+  int elozoido = 0;
+  int elozosebesseg = 0;
   for (var auto in autok) {
     if (auto['rendszam'] as String == rendszam) {
       var ido = auto['ido'] as int;
+      if (elozoido == 0) {
+        elozoido = ido;
+      }
+      tavolsag += (ido - elozoido) / 60 * elozosebesseg;
+      elozosebesseg = auto['sebesseg'];
+      elozoido = ido;
       var ora = ido ~/ 60;
       var perc = ido % 60;
-      print("${ora}:${perc} ${auto['sebesseg']} km");
+      String adatsor = "${ora}:${perc} ${tavolsag.toStringAsFixed(1)} km";
+      print(adatsor);
     }
+  }
+
+  print("7.feladat: ");
+  Map<String, Map<String, String>> login = {};
+
+  for (var auto in autok) {
+    if (login.containsKey(auto['rendszam'])) {
+      var ora = auto['ido'] ~/ 60;
+      var perc = auto['ido'] % 60;
+      login[auto['rendszam']['utolso']] = '$ora $perc' as Map<String, String>;
+    } else {
+      var ora = auto['ido'] ~/ 60;
+      var perc = auto['ido'] % 60;
+      login[auto['rendszam']['elso']] = '$ora $perc' as Map<String, String>;
+    }
+  }
+  for (var auto in login.entries) {
+    print("${auto.key} ${auto.value['elso']} ${auto.value['utolso']}");
   }
 }
